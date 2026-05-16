@@ -4,8 +4,8 @@ This is the polished Next.js + Tailwind website for Prime Accounting & Tax Solut
 
 ## Main updates in this version
 
-- Uses the proper Prime full logo in the header, hero, and footer.
-- Uses the official Xero / Bronze Partner / Certified Advisor collateral rendered from the supplied PDF artwork.
+- Uses only the black Prime logo mark in the header, and the full Prime logo in the hero and footer.
+- Uses the single Xero logo at the top of the Xero section and the official Xero / Bronze Partner / Certified Advisor collateral in the badge card and footer.
 - Removes the screenshot-like Xero image problem.
 - Uses a blue + grey colour palette, with black only as an accent.
 - Adds a working front-end inquiry form routed through `/api/contact`.

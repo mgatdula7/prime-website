@@ -15,6 +15,19 @@ function FullPrimeLogo({ compact = false, className = "" }) {
   );
 }
 
+function HeaderLogo({ className = "" }) {
+  return (
+    <Image
+      src="/prime-icon.png"
+      alt="Prime Accounting & Tax Solutions logo mark"
+      width={46}
+      height={46}
+      priority
+      className={`h-11 w-11 object-contain ${className}`}
+    />
+  );
+}
+
 function XeroOfficialBadge({ compact = false, className = "" }) {
   return (
     <Image
@@ -270,7 +283,7 @@ export default function PrimePngModernHomepage() {
         <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
             <a href="#home" className="flex items-center" aria-label="Prime Accounting & Tax Solutions homepage">
-              <FullPrimeLogo compact />
+              <HeaderLogo />
             </a>
             <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
               <a href="#services" className="hover:text-[#1579B8]">Services</a>
@@ -401,7 +414,7 @@ export default function PrimePngModernHomepage() {
           <div className="grid gap-10 rounded-[2rem] bg-[#EEF3F7] p-8 text-[#1F2937] shadow-xl shadow-slate-300/50 md:grid-cols-[0.9fr_1.1fr] md:p-12">
             <div>
               <div className="mb-6">
-                <XeroOfficialBadge compact />
+                <XeroCircle className="h-20 w-20" />
               </div>
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Xero Bronze Partner</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Move your accounting to the cloud with confidence.</h2>
