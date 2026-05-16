@@ -311,7 +311,7 @@ export default function PrimePngModernHomepage() {
                   Smart systems. Tax-ready. Always.
                 </div>
               </div>
-              <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-[#111827] md:text-6xl">
+              <h1 className="max-w-4xl text-3xl font-semibold tracking-tight text-slate-700 md:text-5xl">
                 Accounting, Tax & Compliance Support for PNG Businesses
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
@@ -340,7 +340,7 @@ export default function PrimePngModernHomepage() {
                       <p className="text-sm uppercase tracking-[0.22em] text-[#1579B8]">Modern accounting workflow</p>
                       <XeroCircle />
                     </div>
-                    <h2 className="mt-3 text-3xl font-bold text-[#111827]">From receipts to compliance filings — handled.</h2>
+                    <h2 className="mt-3 text-2xl font-semibold text-slate-700">From receipts to compliance filings — handled.</h2>
                     <p className="mt-4 leading-7 text-slate-600">
                       Your team submits receipts and invoices through a simple app. We organize the records, maintain the accounts, monitor deadlines, and prepare the required filings.
                     </p>
@@ -389,7 +389,7 @@ export default function PrimePngModernHomepage() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="max-w-3xl">
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Services</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Everything your business needs to stay organized and compliant.</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-700 md:text-4xl">Everything your business needs to stay organized and compliant.</h2>
               <p className="mt-5 text-lg leading-8 text-slate-600">
                 From monthly bookkeeping to tax compliance and Xero implementation, Prime provides practical support designed around the realities of running a business in Papua New Guinea.
               </p>
@@ -417,7 +417,7 @@ export default function PrimePngModernHomepage() {
                 <XeroCircle className="h-20 w-20" />
               </div>
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Xero Bronze Partner</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Move your accounting to the cloud with confidence.</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-700 md:text-4xl">Move your accounting to the cloud with confidence.</h2>
               <p className="mt-5 leading-8 text-slate-600">
                 We help businesses set up Xero properly, migrate existing records, train users, and create a simple workflow for submitting receipts and invoices.
               </p>
@@ -447,7 +447,7 @@ export default function PrimePngModernHomepage() {
             <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr]">
               <div>
                 <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">How we work</p>
-                <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">A clear process from setup to compliance.</h2>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-700 md:text-4xl">A clear process from setup to compliance.</h2>
                 <p className="mt-5 leading-8 text-slate-600">
                   We combine professional accounting judgment with modern tools so business owners can spend less time chasing paperwork and more time running the business.
                 </p>
@@ -468,7 +468,7 @@ export default function PrimePngModernHomepage() {
           <div className="grid gap-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm shadow-slate-200/80 md:grid-cols-[1fr_0.8fr] md:p-12">
             <div>
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Fixed monthly support</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Predictable accounting support for your business.</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-700 md:text-4xl">Predictable accounting support for your business.</h2>
               <p className="mt-5 leading-8 text-slate-600">
                 Instead of dealing with accounting only when a deadline is near, Prime can provide fixed monthly support based on your business size, transaction volume, and compliance needs.
               </p>
@@ -495,7 +495,7 @@ export default function PrimePngModernHomepage() {
           <div className="mx-auto max-w-5xl px-6">
             <div className="text-center">
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">FAQ</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Common questions</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-700 md:text-4xl">Common questions</h2>
             </div>
             <div className="mt-10 space-y-4">
               {faqs.map(({ q, a }) => (
@@ -513,7 +513,7 @@ export default function PrimePngModernHomepage() {
         <section className="bg-[#3F4752] py-20 text-white">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[1fr_0.8fr]">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight md:text-5xl">Ready to simplify your accounting and tax compliance?</h2>
+              <h2 className="text-2xl font-semibold tracking-tight text-white/95 md:text-4xl">Ready to simplify your accounting and tax compliance?</h2>
               <p className="mt-5 max-w-2xl leading-8 text-white/80">
                 Contact Prime to discuss bookkeeping, tax compliance, IPA requirements, Xero setup, migration, training, or fixed monthly accounting support.
               </p>

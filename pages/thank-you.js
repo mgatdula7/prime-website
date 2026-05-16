@@ -11,7 +11,7 @@ export default function ThankYou() {
       <main className="flex min-h-screen items-center justify-center bg-[#F4F7FA] px-6 py-20 text-[#1F2937]">
         <section className="w-full max-w-2xl rounded-3xl bg-white p-10 text-center shadow-xl shadow-slate-300/50">
           <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Message sent</p>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight">Thank you.</h1>
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-slate-700">Thank you.</h1>
           <p className="mt-4 text-lg leading-8 text-slate-600">
             Your message has been sent. We will get in touch with you soon.
           </p>
