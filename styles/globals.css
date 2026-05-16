@@ -2,22 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --prime-blue: #1579B8;
-  --prime-dark: #050505;
-  --prime-sky: #13B5D1;
-  --prime-soft: #EAF5FB;
-  --prime-background: #F7FAFC;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background: var(--prime-background);
-  color: var(--prime-dark);
+  background: #F4F7FA;
 }
 
 * {

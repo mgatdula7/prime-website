@@ -1,5 +1,5 @@
 {
-  "name": "prime-website",
+  "name": "prime-accounting-website",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,15 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^14.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "^15.3.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.0"
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
   }
 }

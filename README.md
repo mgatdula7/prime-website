@@ -1,16 +1,17 @@
 # Prime Accounting & Tax Solutions Website
 
-This is a polished Next.js + Tailwind CSS website based on the original mockup design.
+This is the polished Next.js + Tailwind website for Prime Accounting & Tax Solutions.
 
-## Included
+## Main files
 
-- `pages/index.js` — full homepage based on the approved mockup
-- `public/prime-logo.jpg` — Prime full logo
-- `public/prime-icon.jpg` — Prime PG icon
+- `pages/index.js` — homepage
+- `pages/thank-you.js` — confirmation page after inquiry form submission
+- `pages/_app.js` — imports global Tailwind CSS
+- `styles/globals.css` — Tailwind directives and basic global styling
+- `public/prime-logo.jpg` — full Prime logo
+- `public/prime-icon.png` — Prime icon
 - `public/xero-logo.png` — Xero logo
-- `public/xero-bronze-badge.png` — Xero Bronze Partner / Certified Advisor badge exported from the supplied PDF
-- Tailwind configuration and global styles
-- Next.js configuration
+- `public/xero-bronze-certified-badge.png` — Xero / Bronze Partner / Certified Advisor collateral
 
 ## Local setup
 
@@ -19,28 +20,22 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Then open `http://localhost:3000`.
 
-## Build check
+## Deploy
 
-```bash
-npm run build
-```
-
-## Deploy to Vercel
-
-Push the files to your GitHub repository. Vercel should automatically detect this as a Next.js project and deploy it.
-
-Recommended Vercel settings:
+Upload the full contents of this folder to GitHub. Vercel should be set to:
 
 - Framework Preset: Next.js
 - Root Directory: `./`
-- Build Command: `npm run build`
-- Output Directory: leave blank / default
 - Install Command: `npm install`
+- Build Command: `npm run build`
+- Output Directory: blank/default
 
-## Contact links already added
+## Inquiry form
 
-- Email: `info@patspng.com`
-- WhatsApp: `+675 7570 0800`
-- Google Calendar booking link: already connected in the buttons
+The inquiry form uses FormSubmit:
+
+`https://formsubmit.co/info@patspng.com`
+
+The first test submission may send an activation email to `info@patspng.com`. After activation, submissions will be forwarded to that email address.
