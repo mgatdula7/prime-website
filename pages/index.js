@@ -7,22 +7,34 @@ function FullPrimeLogo({ compact = false, className = "" }) {
     <Image
       src="/prime-logo.jpg"
       alt="Prime Accounting & Tax Solutions"
-      width={compact ? 220 : 520}
-      height={compact ? 54 : 128}
+      width={compact ? 230 : 520}
+      height={compact ? 57 : 128}
       priority={!compact}
-      className={`h-auto w-auto ${compact ? "max-w-[190px] md:max-w-[220px]" : "max-w-[420px] md:max-w-[520px]"} ${className}`}
+      className={`h-auto w-auto ${compact ? "max-w-[210px] md:max-w-[230px]" : "max-w-[420px] md:max-w-[520px]"} ${className}`}
     />
   );
 }
 
-function XeroTripleBadge({ compact = false }) {
+function XeroOfficialBadge({ compact = false, className = "" }) {
   return (
     <Image
       src="/xero-bronze-certified-badge.png"
       alt="Xero Bronze Partner Certified Advisor"
-      width={compact ? 230 : 640}
-      height={compact ? 86 : 238}
-      className={`h-auto ${compact ? "max-w-[210px]" : "w-full max-w-[640px]"}`}
+      width={compact ? 280 : 760}
+      height={compact ? 115 : 310}
+      className={`h-auto w-auto ${compact ? "max-w-[240px]" : "max-w-full"} ${className}`}
+    />
+  );
+}
+
+function XeroCircle({ className = "" }) {
+  return (
+    <Image
+      src="/xero-logo.png"
+      alt="Xero logo"
+      width={54}
+      height={54}
+      className={`h-12 w-12 rounded-full shadow-md ${className}`}
     />
   );
 }
@@ -154,7 +166,42 @@ const faqs = [
 ];
 
 function InquiryModal({ isOpen, onClose }) {
+  const [status, setStatus] = useState("idle");
+  const [message, setMessage] = useState("");
+
   if (!isOpen) return null;
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setStatus("loading");
+    setMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const email = formData.get("email");
+    const inquiry = formData.get("message");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, message: inquiry }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.error || "The message could not be sent.");
+      }
+
+      setStatus("sent");
+      setMessage("Thank you. Your message has been sent. We will get in touch with you soon.");
+      form.reset();
+    } catch (error) {
+      setStatus("error");
+      setMessage(error.message || "The message could not be sent. Please email info@patspng.com directly.");
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/40 px-4 backdrop-blur-sm">
@@ -169,29 +216,34 @@ function InquiryModal({ isOpen, onClose }) {
           </button>
         </div>
 
-        <form
-          className="mt-6 space-y-4"
-          action="https://formsubmit.co/info@patspng.com"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New website inquiry - Prime Accounting & Tax Solutions" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://www.patspng.com/thank-you" />
-
-          <div>
-            <label className="block text-sm font-semibold text-slate-700">Email address</label>
-            <input name="email" type="email" required placeholder="your@email.com" className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-[#1579B8] focus:ring-2 focus:ring-[#1579B8]/20" />
+        {status === "sent" ? (
+          <div className="mt-6 rounded-2xl bg-[#EAF5FB] p-5 text-[#1F2937]">
+            <h4 className="text-lg font-bold">Message sent</h4>
+            <p className="mt-2 leading-7 text-slate-600">{message}</p>
           </div>
-          <div>
-            <label className="block text-sm font-semibold text-slate-700">Message</label>
-            <textarea name="message" required rows={5} placeholder="Tell us what you need help with..." className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-[#1579B8] focus:ring-2 focus:ring-[#1579B8]/20" />
-          </div>
-          <p className="text-xs leading-5 text-slate-500">
-            Your message will be sent to info@patspng.com. The first test submission may require email activation from FormSubmit.
-          </p>
-          <Button type="submit" className="w-full py-4 text-base">Send</Button>
-        </form>
+        ) : (
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700">Email address</label>
+              <input name="email" type="email" required placeholder="your@email.com" className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-[#1579B8] focus:ring-2 focus:ring-[#1579B8]/20" />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-slate-700">Message</label>
+              <textarea name="message" required rows={5} placeholder="Tell us what you need help with..." className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:border-[#1579B8] focus:ring-2 focus:ring-[#1579B8]/20" />
+            </div>
+            {status === "error" && (
+              <div className="rounded-2xl bg-red-50 p-4 text-sm leading-6 text-red-700">
+                {message}
+              </div>
+            )}
+            <p className="text-xs leading-5 text-slate-500">
+              This form sends inquiries to info@patspng.com through the website API. See README for the required Vercel environment variables.
+            </p>
+            <Button type="submit" disabled={status === "loading"} className="w-full py-4 text-base">
+              {status === "loading" ? "Sending..." : "Send"}
+            </Button>
+          </form>
+        )}
       </div>
     </div>
   );
@@ -273,7 +325,7 @@ export default function PrimePngModernHomepage() {
                   <div className="mb-8 rounded-3xl bg-[#EEF3F7] p-5">
                     <div className="mb-5 flex items-center justify-between gap-4">
                       <p className="text-sm uppercase tracking-[0.22em] text-[#1579B8]">Modern accounting workflow</p>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#13B5D1] text-lg font-light lowercase text-white shadow-md">xero</div>
+                      <XeroCircle />
                     </div>
                     <h2 className="mt-3 text-3xl font-bold text-[#111827]">From receipts to compliance filings — handled.</h2>
                     <p className="mt-4 leading-7 text-slate-600">
@@ -348,8 +400,8 @@ export default function PrimePngModernHomepage() {
         <section id="xero" className="mx-auto max-w-7xl px-6 py-20">
           <div className="grid gap-10 rounded-[2rem] bg-[#EEF3F7] p-8 text-[#1F2937] shadow-xl shadow-slate-300/50 md:grid-cols-[0.9fr_1.1fr] md:p-12">
             <div>
-              <div className="mb-6 flex flex-wrap items-center gap-4">
-                <XeroTripleBadge compact />
+              <div className="mb-6">
+                <XeroOfficialBadge compact />
               </div>
               <p className="text-lg font-semibold uppercase tracking-[0.25em] text-[#1579B8]">Xero Bronze Partner</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#111827] md:text-5xl">Move your accounting to the cloud with confidence.</h2>
@@ -359,7 +411,7 @@ export default function PrimePngModernHomepage() {
               <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#1579B8]">Certified Advisor</p>
                 <div className="mt-4 flex justify-center">
-                  <XeroTripleBadge />
+                  <XeroOfficialBadge />
                 </div>
               </div>
             </div>
@@ -467,13 +519,16 @@ export default function PrimePngModernHomepage() {
           </div>
         </section>
 
-        <footer className="bg-white py-10">
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 px-6 text-sm text-slate-500 md:flex-row md:items-center">
+        <footer className="bg-white py-8">
+          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-6 text-sm text-slate-500 md:flex-row md:items-center">
             <div className="flex flex-col gap-3">
               <FullPrimeLogo compact />
-              <div>Smart systems. Tax-ready. Always.</div>
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#1579B8]/20 bg-white px-4 py-2 text-sm font-medium text-slate-600 shadow-sm shadow-slate-200/80">
+                <span className="text-[#1579B8]">✦</span>
+                Smart systems. Tax-ready. Always.
+              </div>
             </div>
-            <XeroTripleBadge compact />
+            <XeroOfficialBadge compact />
           </div>
         </footer>
       </main>
